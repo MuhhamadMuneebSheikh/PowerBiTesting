@@ -1,0 +1,59 @@
+table 'DRBU Mapping'
+	lineageTag: fa7ba50c-d0d1-4a99-98a9-a120032f5070
+
+	column Region
+		dataType: string
+		lineageTag: 079485f4-a1ab-427f-9cba-e0bbbea22604
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column DRBU
+		dataType: string
+		lineageTag: 32750823-742f-443b-8073-a52bf5fb0d8d
+		summarizeBy: none
+		sourceColumn: DRBU
+
+		annotation SummarizationSetBy = Automatic
+
+	column Market
+		dataType: string
+		lineageTag: e295dd2a-9db9-4349-a0bb-50636d463c3d
+		summarizeBy: none
+		sourceColumn: Market
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Currency - EM'
+		dataType: string
+		lineageTag: e95b284a-a274-4aa1-8922-6af31e1e0c4e
+		summarizeBy: none
+		sourceColumn: Currency - EM
+
+		annotation SummarizationSetBy = Automatic
+
+	column Currency
+		dataType: string
+		lineageTag: 35b1ab05-3868-4e86-a2ab-67de476422c2
+		summarizeBy: none
+		sourceColumn: Currency
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'DRBU Mapping' = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"133971b6-11b0-4586-9832-e02bd64675ba" = Workspaces{[workspaceId="05da63f1-bad9-4662-9534-54ca7c283192"]}[Data],
+				    #"d22c3a33-fb3c-4845-abf6-6d13511046ea" = #"133971b6-11b0-4586-9832-e02bd64675ba"{[dataflowId="f9778b77-36c5-4c19-8936-fe29c4259006"]}[Data],
+				    #"DRBU Mapping_" = #"d22c3a33-fb3c-4845-abf6-6d13511046ea"{[entity="DRBU Mapping",version=""]}[Data]
+				in
+				    #"DRBU Mapping_"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

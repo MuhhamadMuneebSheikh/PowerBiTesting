@@ -1,0 +1,507 @@
+table 'ECC Fact BSE'
+	lineageTag: 1af1f851-da9b-4915-8acf-a659391da2bd
+
+	column 'Company Code'
+		dataType: string
+		lineageTag: e3540a17-01ca-43ec-9c2f-bc0696d3ccc9
+		summarizeBy: none
+		sourceColumn: Company Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Period
+		dataType: int64
+		formatString: 0
+		lineageTag: 9547be3f-a4df-4316-a5d1-68fc5eb5f1f0
+		summarizeBy: sum
+		sourceColumn: Period
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Posting Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0ef2a564-ecd4-47b6-820a-d97350bdb7e5
+		summarizeBy: none
+		sourceColumn: Posting Date
+
+		variation Variation
+			isDefault
+			relationship: f38a799f-bdf9-406d-95bb-f17d612f4769
+			defaultHierarchy: LocalDateTable_448c1690-8ffa-4fd2-826b-cdb1f8d5fba2.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Cost element name'
+		dataType: string
+		lineageTag: d09702fe-79e6-407c-8387-eb754b3af75c
+		summarizeBy: none
+		sourceColumn: Cost element name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Object
+		dataType: string
+		lineageTag: c90c3a75-b974-42c3-b5b7-950cf7e0a141
+		summarizeBy: none
+		sourceColumn: Object
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CO object name'
+		dataType: string
+		lineageTag: 7f1713ae-9c6f-4c8d-af14-51b164e06983
+		summarizeBy: none
+		sourceColumn: CO object name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Value TranCurr'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5493b814-d424-4605-a2d3-0ec06ea202ee
+		summarizeBy: sum
+		sourceColumn: Value TranCurr
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Transaction Currency'
+		dataType: string
+		lineageTag: aaac10a6-ecee-427e-9888-7cd6b69331c8
+		summarizeBy: none
+		sourceColumn: Transaction Currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Value in Obj. Crcy'
+		dataType: double
+		formatString: 0
+		lineageTag: 78333284-7d82-4be7-bb8f-061ad138d091
+		summarizeBy: sum
+		sourceColumn: Value in Obj. Crcy
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Object Currency'
+		dataType: string
+		lineageTag: 28a668ff-69aa-46b1-b388-3cd51fe18faf
+		summarizeBy: none
+		sourceColumn: Object Currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Document type'
+		dataType: string
+		lineageTag: 3dbab9b3-3a36-4608-a3d2-0dba1690c61d
+		summarizeBy: none
+		sourceColumn: Document type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cost element descr.'
+		dataType: string
+		lineageTag: 529f7a70-3685-421c-ab63-1a6131510c84
+		summarizeBy: none
+		sourceColumn: Cost element descr.
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'WBS element'
+		dataType: string
+		lineageTag: 6252a1ae-4a43-47de-8883-16060971b656
+		summarizeBy: none
+		sourceColumn: WBS element
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ref. document number'
+		dataType: string
+		lineageTag: 38d8cbcf-c27f-4fce-baf5-ed963f727c63
+		summarizeBy: none
+		sourceColumn: Ref. document number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Offsetting acct no.'
+		dataType: string
+		lineageTag: 31cdcae4-2610-4513-9daa-cfd20906621f
+		summarizeBy: none
+		sourceColumn: Offsetting acct no.
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Document Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3332cdd7-77a4-4cb9-955c-96fabacbfcae
+		summarizeBy: sum
+		sourceColumn: Document Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Document Header Text'
+		dataType: string
+		lineageTag: 747530f8-ef23-4da0-ab35-569f8629f8cb
+		summarizeBy: none
+		sourceColumn: Document Header Text
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 5346049c-2124-4177-a646-3a07fd8b626f
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Purchasing Document'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2a29e13d-0bf2-4de8-a95c-784e478895c7
+		summarizeBy: sum
+		sourceColumn: Purchasing Document
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Purchase order text'
+		dataType: string
+		lineageTag: b10a0971-8bcb-42e9-9ef1-8b2a9fc9c604
+		summarizeBy: none
+		sourceColumn: Purchase order text
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'User Name'
+		dataType: string
+		lineageTag: a980525c-ef69-4fd5-9752-2932fe183131
+		summarizeBy: none
+		sourceColumn: User Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Document Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8ed71018-59a4-4d5a-b055-9e2a110c53d9
+		summarizeBy: none
+		sourceColumn: Document Date
+
+		variation Variation
+			isDefault
+			relationship: 5c04938b-2fe3-4dac-939b-913e4e0216a7
+			defaultHierarchy: LocalDateTable_4797437e-5b6d-4a07-91b0-a28125d5c8e4.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Val/COArea Crcy'
+		dataType: int64
+		formatString: 0
+		lineageTag: 48e92bc5-a1b7-4ecb-b197-7cdd57fa18d9
+		summarizeBy: sum
+		sourceColumn: Val/COArea Crcy
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total quantity'
+		dataType: int64
+		formatString: 0
+		lineageTag: f6270e5d-e435-465e-a1e5-e88364f71475
+		summarizeBy: sum
+		sourceColumn: Total quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: int64
+		formatString: 0
+		lineageTag: bc3dae30-1b29-40c1-9b6e-662bd20d996d
+		summarizeBy: sum
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Investment Type'
+		dataType: string
+		lineageTag: 230e417c-d43d-444a-8ad3-c3c615772985
+		summarizeBy: none
+		sourceColumn: Investment Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column EM
+		dataType: string
+		lineageTag: 85d196ea-6865-4108-babd-3a8668ee82e6
+		summarizeBy: none
+		sourceColumn: EM
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Submission Month Year'
+		dataType: string
+		lineageTag: 75efaf8c-55a4-459f-adf9-3871061c5070
+		summarizeBy: none
+		sourceColumn: Submission Month Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Submission Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: e9a56db4-60fb-4b29-8e9b-60c5da074023
+		summarizeBy: sum
+		sourceColumn: Submission Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SOP vs ACT'
+		dataType: string
+		lineageTag: 06b43bc7-00ed-4758-a2cb-ce34a8705db9
+		summarizeBy: none
+		sourceColumn: SOP vs ACT
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month_Year_inside_Submission
+		dataType: string
+		lineageTag: a18ccef1-5467-4fd8-8a96-9d5fce70db03
+		summarizeBy: none
+		sourceColumn: Month_Year_inside_Submission
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year inside Submission'
+		dataType: int64
+		formatString: 0
+		lineageTag: c034141a-b565-4c78-93e5-c8dcfcc6cfbd
+		summarizeBy: sum
+		sourceColumn: Year inside Submission
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year_inside_Submission
+		dataType: string
+		lineageTag: a8a33ebc-4d5a-4ded-889c-4b695d665794
+		summarizeBy: none
+		sourceColumn: Year_inside_Submission
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FX Rate'
+		dataType: double
+		lineageTag: 3244bfae-8d5d-4326-9641-a19b3a781ca8
+		summarizeBy: sum
+		sourceColumn: FX Rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'FX Rate Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: c7e4470f-16f5-4961-8562-d6ecb7956b7a
+		summarizeBy: sum
+		sourceColumn: FX Rate Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'BPC WBS'
+		dataType: string
+		lineageTag: a6be2d80-ea09-41d9-b902-ccf3198540bd
+		summarizeBy: none
+		sourceColumn: BPC WBS
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CEG L2'
+		dataType: string
+		lineageTag: 955daaea-546a-4e5c-a3bb-10a2192f3a1b
+		summarizeBy: none
+		sourceColumn: CEG L2
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CEG L3'
+		dataType: string
+		lineageTag: 790b4d6d-1266-4a73-bfc6-3662774f62f8
+		summarizeBy: none
+		sourceColumn: CEG L3
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CEG L3 Desc'
+		dataType: string
+		lineageTag: 197c17de-44e0-4f40-a0cb-c9e3247c3ff1
+		summarizeBy: none
+		sourceColumn: CEG L3 Desc
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SAP WBS CEG LV 3'
+		dataType: string
+		lineageTag: c1be4b1b-c904-4089-95b9-6e7fe31c52c0
+		summarizeBy: none
+		sourceColumn: SAP WBS CEG LV 3
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'BPC WBS & CEG LV 3'
+		dataType: string
+		lineageTag: c9e54741-b88b-4d07-8199-55e67e6c6859
+		summarizeBy: none
+		sourceColumn: BPC WBS & CEG LV 3
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'MI Sub Type'
+		dataType: string
+		lineageTag: 2b0fa5bb-9351-4eb3-8f4b-06872286ef7c
+		summarizeBy: none
+		sourceColumn: MI Sub Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACR
+		dataType: string
+		lineageTag: 4b2f70ae-d4b9-41cf-9dea-1502442ab9cd
+		summarizeBy: none
+		sourceColumn: ACR
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Budget Head (Category)'
+		dataType: string
+		lineageTag: 8250188b-d254-4907-939a-7f7cf8e44bcc
+		summarizeBy: none
+		sourceColumn: Budget Head (Category)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sub Budget head (Sub-Category)'
+		dataType: string
+		lineageTag: c6576b13-8f54-4a63-800b-2e407580b8a5
+		summarizeBy: none
+		sourceColumn: Sub Budget head (Sub-Category)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Budget Owner'
+		dataType: string
+		lineageTag: 30c50300-2d60-4f50-a1a6-570d845f0694
+		summarizeBy: none
+		sourceColumn: Budget Owner
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Budget Owner view'
+		dataType: string
+		lineageTag: 80054158-dbde-46b4-b429-9345bde7e789
+		summarizeBy: none
+		sourceColumn: Budget Owner view
+
+		annotation SummarizationSetBy = Automatic
+
+	column CI/BSE
+		dataType: string
+		lineageTag: d85d902b-3651-44e1-b4be-96396b6e79d3
+		summarizeBy: none
+		sourceColumn: CI/BSE
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Material Code'
+		dataType: string
+		lineageTag: 0fd22f15-b904-42d9-ab3a-706a5509b21f
+		summarizeBy: none
+		sourceColumn: Material Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sub Product Type'
+		dataType: string
+		lineageTag: 6deb405a-16ce-40fa-888d-4cedc7d60b40
+		summarizeBy: none
+		sourceColumn: Sub Product Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Type'
+		dataType: string
+		lineageTag: a77ac0a0-b23e-4350-9493-ce4bffff3013
+		summarizeBy: none
+		sourceColumn: Product Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Accrual/Non accrual'
+		dataType: string
+		lineageTag: e34fd36d-bfad-480e-a33c-afbe218445c3
+		summarizeBy: none
+		sourceColumn: Accrual/Non accrual
+
+		annotation SummarizationSetBy = Automatic
+
+	column Currency
+		dataType: string
+		lineageTag: 12c6a693-38c6-482e-be41-4ed47cabba4b
+		summarizeBy: none
+		sourceColumn: Currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: double
+		lineageTag: 8cc32e7e-dbe5-4a35-afdf-701bf6d060f0
+		summarizeBy: sum
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Source
+		dataType: string
+		lineageTag: ca2f69b5-e726-417f-84b3-3da72c7a0540
+		summarizeBy: none
+		sourceColumn: Source
+
+		annotation SummarizationSetBy = Automatic
+
+	column GL
+		dataType: int64
+		formatString: 0
+		lineageTag: b239db9c-5313-4c95-a1c3-a4089e34b96f
+		summarizeBy: sum
+		sourceColumn: GL
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'GL Desc'
+		dataType: string
+		lineageTag: f92b0c03-6fef-42df-b8da-e17e17c7b5fa
+		summarizeBy: none
+		sourceColumn: GL Desc
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'ECC Fact BSE' = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"133971b6-11b0-4586-9832-e02bd64675ba" = Workspaces{[workspaceId="05da63f1-bad9-4662-9534-54ca7c283192"]}[Data],
+				    #"d22c3a33-fb3c-4845-abf6-6d13511046ea" = #"133971b6-11b0-4586-9832-e02bd64675ba"{[dataflowId="3491eae0-c9f1-4f38-9677-154e457bf2f1"]}[Data],
+				    #"ECC Fact BSE_" = #"d22c3a33-fb3c-4845-abf6-6d13511046ea"{[entity="ECC Fact BSE",version=""]}[Data]
+				in
+				    #"ECC Fact BSE_"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

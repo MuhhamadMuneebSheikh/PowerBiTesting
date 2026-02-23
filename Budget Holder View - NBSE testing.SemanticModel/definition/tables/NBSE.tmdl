@@ -1,0 +1,55 @@
+table NBSE
+	isHidden
+	lineageTag: 61b971e7-823e-4dc7-838c-f43194346f04
+
+	column 'User Name'
+		dataType: string
+		isHidden
+		lineageTag: 5a77fdf3-a1b9-415d-931c-d2028d2e8388
+		summarizeBy: none
+		sourceColumn: User Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'User ID'
+		dataType: string
+		isHidden
+		lineageTag: 12888cde-6204-4b82-bedc-2072e99e4498
+		summarizeBy: none
+		sourceColumn: User ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column EM
+		dataType: string
+		isHidden
+		lineageTag: a2a41be4-8d44-4be0-ab4d-5a4d768febf6
+		summarizeBy: none
+		sourceColumn: EM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition NBSE = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(Web.Contents("https://bat.sharepoint.com/sites/PK12-ProjectSimplification/Shared%20Documents/General/MI%20Tracker/RLS-MI%20Tracker.xlsx"), null, true),
+				    NBSE_Sheet = Source{[Item="NBSE",Kind="Sheet"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(NBSE_Sheet,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"User Name", type text}, {"User ID", type text}, {"EM", type text}})
+				in
+				    #"Changed Type1"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,122 @@
+table 'Global Measures'
+	lineageTag: 14830432-2312-467f-bee9-bf5fae10cc9a
+
+	measure 'Year Check(for base table)' =
+			
+			var selected_year = SELECTEDVALUE('Final Fact'[Year])
+			RETURN
+			IF( selected_year in VALUES('Base Table'[Year]), "y", "n" )
+		lineageTag: 0ec10321-656d-4292-bc9a-0ba3dfc2226d
+
+	measure BHI = ```
+			
+			CALCULATE(SUM('Final Fact'[Value])
+			,'Final Fact'[Source] = "BHI"
+			//,ALL('Final Fact'[Submission Month Year])
+			) 
+			```
+		lineageTag: 01d517cd-d0c7-4b47-b827-e6dd86a4f987
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure ECC =
+			
+			// ECC has YTD data pre calculated
+			CALCULATE(SUM('Final Fact'[Value]), 'Final Fact'[Source] = "ECC")
+			// IF("ECC" IN VALUES('Final Fact'[Source]), SUM('Final Fact'[Value]), 0)
+		formatString: 0
+		lineageTag: af6d3296-df52-4c64-801d-c821bff5f121
+
+	measure 'ECC Check' =
+			
+			var eec = "ECC"
+			RETURN
+			IF(eec in VALUES('Base Table'[Source]), "y", "n")
+		lineageTag: bff2fa78-086c-4438-8fc6-b1be9f202653
+
+	measure 'Final Fact Count' = COUNTROWS('Final Fact')
+		formatString: 0
+		lineageTag: 4d231644-a05a-4604-bd5a-9d8de81c429d
+
+	measure 'Open PO Count' = COUNTROWS('Open PO Fact')
+		formatString: 0
+		lineageTag: 429ec36a-1970-499a-a879-f67e06dd5b03
+
+	measure 'ECC Fact BSE Count' = COUNTROWS('ECC Fact BSE')
+		formatString: 0
+		lineageTag: 18c9cc06-4e16-4c9f-8685-ce63a53ba31f
+
+	measure 'ECC Fact NBSE Count' = COUNTROWS('ECC Fact NBSE')
+		formatString: 0
+		lineageTag: d7473a0a-9477-43dc-ae6c-0a113172d2b2
+
+	measure 'Selected Actual ECC (Base Table)' =
+			
+			var sop =
+			FORMAT(SELECTEDVALUE('Base Table'[Submission Month Year]), "MMM YYYY")
+			RETURN
+			", Actuals ECC: " & sop
+		lineageTag: 4db67b9d-cbf4-4948-8e9a-6d60c35266da
+
+	measure 'Selected Currency  (Final Fact)' =
+			
+			var cr =
+			SELECTEDVALUE('Final Fact'[Currency])
+			
+			RETURN
+			", Currency: " & cr
+		lineageTag: 624f9682-5467-4970-81b0-389f2eb0c198
+
+	measure 'Selected Current Year (Final Fact)' =
+			
+			var cr =
+			SELECTEDVALUE('Final Fact'[Year])
+			
+			RETURN
+			"Current Year: " & cr
+		lineageTag: 6224f5d8-1d78-49bc-a01d-363b45a5f629
+
+	measure Disclaimer =
+			
+			"Selected, " & [Selected Current Year (Final Fact)] & [Selected Actual ECC (Base Table)] & " " & [Selected Currency  (Final Fact)]
+		lineageTag: e5da50a2-ebf7-4f28-b1df-43def5c91813
+
+	measure 'Selected EM' = ```
+			
+			// MAX(NBSE[EM])
+			IF(NOT(ISFILTERED(NBSE[EM])), " " & 
+			CONCATENATEX( ALLSELECTED(NBSE[EM]),NBSE[EM],", "),MAX(NBSE[EM]))
+			& " / " & [Selected User Name]
+			```
+		lineageTag: cc63407d-8fdc-488e-9bba-863a232d8772
+
+	measure 'Selected User Name' = MAX(NBSE[User Name])
+		lineageTag: e94256cd-c446-4691-b54a-b445e454d591
+
+	measure 'Filtered Months' =
+			
+			CALCULATE (
+			    DISTINCTCOUNT('Base Table'[Submission Month Year]),
+			    TREATAS ( VALUES ( 'DRBU Mapping'[Market] ), 'Base Table'[EM])
+			)
+		lineageTag: 689bfb43-d2a5-45fc-8e67-5ed1179ea6f9
+
+	column Column1
+		dataType: string
+		lineageTag: 790ce735-ded6-4b24-a92f-bc8d7289d3c8
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Global Measures' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

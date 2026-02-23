@@ -1,0 +1,31 @@
+table 'Months Sorting Table'
+	lineageTag: c523c8ee-f0ea-45f7-b6e3-08c6f702776b
+
+	column Months
+		dataType: string
+		lineageTag: 1ea81df9-2bb0-4a03-bf76-2da61ba2c746
+		summarizeBy: none
+		sourceColumn: Months
+
+		annotation SummarizationSetBy = Automatic
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: 46c19dfd-43be-435f-a6e7-ef68abf3910c
+		summarizeBy: none
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Months Sorting Table' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45W8krMU9JRMlSK1YlWcktNArKNwGzfxCIg2xjMdiwAsU2g4pVAtimY7VUK0msGZecA2eYQ9aXpQLYFmB2cWgBkW4LZ/sklILsMwBy//DIQB2KzS2oyiAO0OhYA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Months = _t, Index = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Months", type text}, {"Index", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

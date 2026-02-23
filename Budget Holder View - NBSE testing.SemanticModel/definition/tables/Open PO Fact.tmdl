@@ -1,0 +1,505 @@
+table 'Open PO Fact'
+	lineageTag: ddec616b-c7ed-48df-bdba-823e883779e8
+
+	column 'Purch.Doc.'
+		dataType: int64
+		formatString: 0
+		lineageTag: b4198095-5511-49ac-aff9-f15f57cf3732
+		summarizeBy: sum
+		sourceColumn: Purch.Doc.
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: int64
+		formatString: 0
+		lineageTag: d02d61cd-5650-4f2c-a453-2d4f64439825
+		summarizeBy: sum
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item Decsription'
+		dataType: string
+		lineageTag: e830138d-e734-4ee6-85e6-cb0e3ac79230
+		summarizeBy: none
+		sourceColumn: Item Decsription
+
+		annotation SummarizationSetBy = Automatic
+
+	column Vendor
+		dataType: string
+		lineageTag: e5d33820-cced-44bc-a3d3-056cc909a4d2
+		summarizeBy: none
+		sourceColumn: Vendor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name1
+		dataType: string
+		lineageTag: 817f0f28-73f5-4b0b-a2af-91699b91ea2d
+		summarizeBy: none
+		sourceColumn: Name1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Company code'
+		dataType: string
+		lineageTag: 50bfe59c-a8c0-4871-8954-727d1b4e1731
+		summarizeBy: none
+		sourceColumn: Company code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'G/L Acct'
+		dataType: int64
+		formatString: 0
+		lineageTag: ca0d46d9-a969-47e0-992c-b75f7f689f1e
+		summarizeBy: sum
+		sourceColumn: G/L Acct
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'WBS Element'
+		dataType: string
+		lineageTag: 6734a426-570c-4106-94a9-999c4145f42a
+		summarizeBy: none
+		sourceColumn: WBS Element
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'WBS Description'
+		dataType: string
+		lineageTag: 649e757a-63b7-4eb5-be4a-d0299032cd62
+		summarizeBy: none
+		sourceColumn: WBS Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cost Center'
+		dataType: string
+		lineageTag: a8bfa899-c197-4732-966e-f2a612c0d2d5
+		summarizeBy: none
+		sourceColumn: Cost Center
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cost Center Descripion'
+		dataType: string
+		lineageTag: d4b165f7-1aff-4c41-80bf-950068fa26ae
+		summarizeBy: none
+		sourceColumn: Cost Center Descripion
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PO Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e12ffb43-77bf-4b40-ae53-c588f065a794
+		summarizeBy: none
+		sourceColumn: PO Date
+
+		variation Variation
+			isDefault
+			relationship: 75bba0e2-23c6-4f94-ba75-0c23247db5c9
+			defaultHierarchy: LocalDateTable_d5daddff-f7a3-4064-8564-aad22a6fcf70.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Final Delivery Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5a09f03c-115b-4437-81d7-582268a66331
+		summarizeBy: none
+		sourceColumn: Final Delivery Date
+
+		variation Variation
+			isDefault
+			relationship: 9b32105c-d74d-4265-8dea-65e29fd0fdf6
+			defaultHierarchy: LocalDateTable_5da9c946-fd2d-460b-abe3-b7de11e84bfe.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Open PO Quantity'
+		dataType: int64
+		formatString: 0
+		lineageTag: fb513ac5-22c3-46f7-bea3-f4114f3b77fe
+		summarizeBy: sum
+		sourceColumn: Open PO Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Currency
+		dataType: string
+		lineageTag: 81c54813-2387-460b-b659-679c8decf0c2
+		summarizeBy: none
+		sourceColumn: Currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Net order value'
+		dataType: double
+		formatString: 0
+		lineageTag: ea4fe481-44d5-41cf-a249-a16ff25ea8d5
+		summarizeBy: sum
+		sourceColumn: Net order value
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Net GR value DC'
+		dataType: double
+		formatString: 0
+		lineageTag: 58933b2d-50b2-4239-ac89-efc2d6646b42
+		summarizeBy: sum
+		sourceColumn: Net GR value DC
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Net GR value LC'
+		dataType: int64
+		formatString: 0
+		lineageTag: b2f0db28-95e8-410a-92ae-be512646528f
+		summarizeBy: sum
+		sourceColumn: Net GR value LC
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Amount DC'
+		dataType: int64
+		formatString: 0
+		lineageTag: f7501dce-bdf3-439a-8e44-781e4426b6d9
+		summarizeBy: sum
+		sourceColumn: Invoice Amount DC
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Amount LC'
+		dataType: int64
+		formatString: 0
+		lineageTag: 62c8c623-59ec-4ed7-9a91-231e51376ad8
+		summarizeBy: sum
+		sourceColumn: Invoice Amount LC
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Doc. Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7a20100b-0160-4dfb-8017-ac304ecc56af
+		summarizeBy: none
+		sourceColumn: Invoice Doc. Date
+
+		variation Variation
+			isDefault
+			relationship: 3fa2e0ec-795a-4251-9a4e-cbd9ee08c66f
+			defaultHierarchy: LocalDateTable_58ea82a5-3d03-474e-8c8a-2dea0df81059.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Invoice Post. Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3925380b-54a4-420d-b525-31e0688a0710
+		summarizeBy: none
+		sourceColumn: Invoice Post. Date
+
+		variation Variation
+			isDefault
+			relationship: 0acc4396-1d36-4523-92e8-d1cf14546019
+			defaultHierarchy: LocalDateTable_d1b98812-260e-42ca-8ebd-fb6ff47347bf.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Invoice No.'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9e84d588-7d9e-4d41-bdb5-86a1b980fcc0
+		summarizeBy: sum
+		sourceColumn: Invoice No.
+
+		annotation SummarizationSetBy = Automatic
+
+	column DCI
+		dataType: string
+		lineageTag: 469db048-ad8a-4e52-a16c-17e7778425f1
+		summarizeBy: none
+		sourceColumn: DCI
+
+		annotation SummarizationSetBy = Automatic
+
+	column FIn
+		dataType: string
+		lineageTag: 1b8c8c15-3173-4ba6-a1f4-b6bdddc43d32
+		summarizeBy: none
+		sourceColumn: FIn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payment Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e5e06689-9eac-4192-ab98-412f2d6d73d0
+		summarizeBy: none
+		sourceColumn: Payment Date
+
+		variation Variation
+			isDefault
+			relationship: a23f61d9-b5ed-48ae-9070-850b6c7f8d29
+			defaultHierarchy: LocalDateTable_e4673745-1b15-4b32-81cf-6ab5699759c0.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Person Created By'
+		dataType: string
+		lineageTag: 6ac78296-e7a3-4f2b-b672-c60e112542fc
+		summarizeBy: none
+		sourceColumn: Person Created By
+
+		annotation SummarizationSetBy = Automatic
+
+	column EM
+		dataType: string
+		lineageTag: aca9491d-3cf4-41b6-bcef-313294c4b6d5
+		summarizeBy: none
+		sourceColumn: EM
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Submission Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7a4b2cbd-cb60-4ef4-a305-f32dc9409ea2
+		summarizeBy: sum
+		sourceColumn: Submission Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Open Amount (DC)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 032f74db-3a45-4498-9b7a-aedfbc83dec3
+		summarizeBy: sum
+		sourceColumn: Open Amount (DC)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: 118d48a7-dc8d-423f-b095-bd374228532a
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CEG L2'
+		dataType: string
+		lineageTag: 63eeeeaf-7716-4fe5-b1ab-07aa9ee60477
+		summarizeBy: none
+		sourceColumn: CEG L2
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CEG L3'
+		dataType: string
+		lineageTag: 3f30f6d5-f5f2-4645-a963-488b49eb33e3
+		summarizeBy: none
+		sourceColumn: CEG L3
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 854091b5-6d6d-4c2e-9562-9ba41895d0eb
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'BPC WBS'
+		dataType: string
+		lineageTag: 1d3ce58f-ff16-4337-88bf-926adc5c006d
+		summarizeBy: none
+		sourceColumn: BPC WBS
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'BPC WBS & CEG LV 3'
+		dataType: string
+		lineageTag: 246f1ddf-054d-4dd0-bc68-f21a28851189
+		summarizeBy: none
+		sourceColumn: BPC WBS & CEG LV 3
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CC & CEG LV 3'
+		dataType: string
+		lineageTag: 3e9a01b3-531c-454c-9644-0c417dc8ea6e
+		summarizeBy: none
+		sourceColumn: CC & CEG LV 3
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'MI Sub Type'
+		dataType: string
+		lineageTag: 35e00f91-bfed-488e-9f97-a618454c5e76
+		summarizeBy: none
+		sourceColumn: MI Sub Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACR
+		dataType: string
+		lineageTag: 92b0f1b2-9cfc-45aa-88f5-35dde848bb30
+		summarizeBy: none
+		sourceColumn: ACR
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Budget Head (Category)'
+		dataType: string
+		lineageTag: 54c41d82-bd25-4b55-8f84-238eb7bde97e
+		summarizeBy: none
+		sourceColumn: Budget Head (Category)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sub Budget head (Sub-Category)'
+		dataType: string
+		lineageTag: b92aabd1-5bab-4112-90c1-9a9d36443f19
+		summarizeBy: none
+		sourceColumn: Sub Budget head (Sub-Category)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Budget Owner'
+		dataType: string
+		lineageTag: 74fec588-b1e5-4759-b2de-4ce8b401b599
+		summarizeBy: none
+		sourceColumn: Budget Owner
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Budget Owner view'
+		dataType: string
+		lineageTag: 87a12b4d-6711-4cf1-8629-f8fbbad04579
+		summarizeBy: none
+		sourceColumn: Budget Owner view
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Material Group'
+		dataType: string
+		lineageTag: c223528b-5e00-45da-b671-fc798526fb11
+		summarizeBy: none
+		sourceColumn: Material Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Category'
+		dataType: string
+		lineageTag: 3489f891-138a-4b13-9673-1e65049e28be
+		summarizeBy: none
+		sourceColumn: Product Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Crcy
+		dataType: string
+		lineageTag: 11fd37c2-487a-40e7-b61d-95ec9520f107
+		summarizeBy: none
+		sourceColumn: Crcy
+
+		annotation SummarizationSetBy = Automatic
+
+	column Crcy1
+		dataType: string
+		lineageTag: ea9ee697-c983-4356-9777-62f0af0116a0
+		summarizeBy: none
+		sourceColumn: Crcy1
+
+		annotation SummarizationSetBy = Automatic
+
+	column Crcy3
+		dataType: string
+		lineageTag: 4e0c9418-1acf-425b-a9b4-200398b7dc9c
+		summarizeBy: none
+		sourceColumn: Crcy3
+
+		annotation SummarizationSetBy = Automatic
+
+	column Crcy4
+		dataType: string
+		lineageTag: 8b9082d6-7909-49cd-9c44-79cda718530f
+		summarizeBy: none
+		sourceColumn: Crcy4
+
+		annotation SummarizationSetBy = Automatic
+
+	column Crcy5
+		dataType: string
+		lineageTag: 8a5b795f-6260-4874-b0c4-f4ffc0c2cd17
+		summarizeBy: none
+		sourceColumn: Crcy5
+
+		annotation SummarizationSetBy = Automatic
+
+	column Crcy6
+		dataType: string
+		lineageTag: 7a01ab6a-08f8-42ec-9644-7267ab488b80
+		summarizeBy: none
+		sourceColumn: Crcy6
+
+		annotation SummarizationSetBy = Automatic
+
+	column Crcy2
+		dataType: string
+		lineageTag: 9611fc6d-4743-47e6-b0bc-03ac583cc67a
+		summarizeBy: none
+		sourceColumn: Crcy2
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: double
+		lineageTag: e9960b5f-ffe2-4f81-8627-813b2327721e
+		summarizeBy: sum
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'CEG L3 Desc'
+		dataType: string
+		lineageTag: 90139894-d8bd-40a6-b30b-96ad935b7f80
+		summarizeBy: none
+		sourceColumn: CEG L3 Desc
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Open PO Fact' = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"133971b6-11b0-4586-9832-e02bd64675ba" = Workspaces{[workspaceId="05da63f1-bad9-4662-9534-54ca7c283192"]}[Data],
+				    #"d22c3a33-fb3c-4845-abf6-6d13511046ea" = #"133971b6-11b0-4586-9832-e02bd64675ba"{[dataflowId="f9778b77-36c5-4c19-8936-fe29c4259006"]}[Data],
+				    #"Open PO Fact_" = #"d22c3a33-fb3c-4845-abf6-6d13511046ea"{[entity="Open PO Fact",version=""]}[Data]
+				in
+				    #"Open PO Fact_"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

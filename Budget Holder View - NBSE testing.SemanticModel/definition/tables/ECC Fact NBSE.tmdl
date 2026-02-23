@@ -1,0 +1,441 @@
+table 'ECC Fact NBSE'
+	lineageTag: 007cb281-7180-447e-89c0-1e0589849a8d
+
+	measure 'Value in obj curr' = CALCULATE(SUM('ECC Fact NBSE'[Value in Obj. Crcy]))
+		formatString: 0.00
+		lineageTag: 7e223556-21e2-4d32-88a6-73aab3969741
+
+	column 'Cost Center'
+		dataType: string
+		lineageTag: 8d014fa5-52a8-46fd-9cf8-e5cf13b31755
+		summarizeBy: none
+		sourceColumn: Cost Center
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cost element descr.'
+		dataType: string
+		lineageTag: 5d9e73f8-0fa4-404d-9370-68b3357921c0
+		summarizeBy: none
+		sourceColumn: Cost element descr.
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Offsetting acct no.'
+		dataType: string
+		lineageTag: 86317c1c-fda2-4a76-9197-c98d61ccd81f
+		summarizeBy: none
+		sourceColumn: Offsetting acct no.
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ref Document Number'
+		dataType: string
+		lineageTag: 8aa43f3e-297a-46b5-ac17-c6ad5b83391e
+		summarizeBy: none
+		sourceColumn: Ref Document Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Document type'
+		dataType: string
+		lineageTag: 3cacbd7f-da7c-400e-a387-2150e9fc285d
+		summarizeBy: none
+		sourceColumn: Document type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Period
+		dataType: int64
+		formatString: 0
+		lineageTag: 243949e8-c681-4692-ba20-b6476fcdb152
+		summarizeBy: sum
+		sourceColumn: Period
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Document Header Text'
+		dataType: string
+		lineageTag: 135a0f8c-e17c-4bf7-b385-74df123ec31a
+		summarizeBy: none
+		sourceColumn: Document Header Text
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Purchasing Document'
+		dataType: string
+		lineageTag: d96abd0a-2d52-49c2-b08d-48cfa034c65a
+		summarizeBy: none
+		sourceColumn: Purchasing Document
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Purchase order text'
+		dataType: string
+		lineageTag: a9266251-d949-40b0-ae6c-93796416f632
+		summarizeBy: none
+		sourceColumn: Purchase order text
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 175edbfc-beb4-4075-8d65-5c0380cc3f89
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CO object name'
+		dataType: string
+		lineageTag: e9295e3f-fa0f-49e4-bc67-e097d9b323b6
+		summarizeBy: none
+		sourceColumn: CO object name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Aux. acct assignment_1'
+		dataType: string
+		lineageTag: 90fa85d6-c1fd-44ce-902b-61650d1edf0e
+		summarizeBy: none
+		sourceColumn: Aux. acct assignment_1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Document Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1ad60257-6543-4e40-8109-ff01990e8ea2
+		summarizeBy: none
+		sourceColumn: Document Date
+
+		variation Variation
+			isDefault
+			relationship: f9afabe0-af2f-4234-ad20-ef1a160752a3
+			defaultHierarchy: LocalDateTable_db66e2c9-0fd2-4436-8f81-b6647b36dcf3.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Posting Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d90235a7-e099-445a-8365-c8b731b0e552
+		summarizeBy: none
+		sourceColumn: Posting Date
+
+		variation Variation
+			isDefault
+			relationship: 8deb5346-bba0-4900-82cd-db08d413d19e
+			defaultHierarchy: LocalDateTable_e4a56b34-8a17-4dc3-a243-f60b8e37cc18.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Value in Obj. Crcy'
+		dataType: double
+		lineageTag: 78558c98-bb93-420f-a687-4b3589cc36b3
+		summarizeBy: sum
+		sourceColumn: Value in Obj. Crcy
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Object Currency'
+		dataType: string
+		lineageTag: ba65cbe2-4e43-4de4-8ead-13a9983166f6
+		summarizeBy: none
+		sourceColumn: Object Currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Company Code'
+		dataType: string
+		lineageTag: 0d7d6074-7fe5-4cce-939d-4ae1ee4d9ca4
+		summarizeBy: none
+		sourceColumn: Company Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column EM
+		dataType: string
+		lineageTag: b83f6397-58ce-48aa-957d-83dd9b9e82c4
+		summarizeBy: none
+		sourceColumn: EM
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Submission Month Year'
+		dataType: string
+		lineageTag: 5bb63d19-36ee-4bcc-b734-b0db4da15861
+		summarizeBy: none
+		sourceColumn: Submission Month Year
+		sortByColumn: 'Submission Month Year - Copy'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Submission Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: 70d83fa3-f26f-4f99-a48e-14b01132f006
+		summarizeBy: sum
+		sourceColumn: Submission Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SOP vs ACT'
+		dataType: string
+		lineageTag: 6a606a9b-ffaa-4c40-876e-eb15cb4a6cc1
+		summarizeBy: none
+		sourceColumn: SOP vs ACT
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month_Year_inside_Submission
+		dataType: string
+		lineageTag: 0dbc66dd-e724-4e53-88d3-7b02035249a1
+		summarizeBy: none
+		sourceColumn: Month_Year_inside_Submission
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year inside Submission'
+		dataType: int64
+		formatString: 0
+		lineageTag: 798618a9-8a97-4710-b369-0411850d5f6c
+		summarizeBy: sum
+		sourceColumn: Year inside Submission
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year_inside_Submission
+		dataType: string
+		lineageTag: 83c64e6b-a0db-4837-8deb-84fa46e3f953
+		summarizeBy: none
+		sourceColumn: Year_inside_Submission
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FX Rate'
+		dataType: double
+		lineageTag: 5c0d6f1d-6bae-4ee8-a14b-f29cfd9cbe34
+		summarizeBy: sum
+		sourceColumn: FX Rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'FX Rate Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2df503e2-acf4-4636-92ce-cb9b963d7ce9
+		summarizeBy: sum
+		sourceColumn: FX Rate Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CEG L1'
+		dataType: string
+		lineageTag: fdbf7cba-8fd1-43ad-a411-a309cb45c3e8
+		summarizeBy: none
+		sourceColumn: CEG L1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CEG L2'
+		dataType: string
+		lineageTag: bc8f5c9d-277e-4cf0-8c72-1392819f90d0
+		summarizeBy: none
+		sourceColumn: CEG L2
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CEG L3'
+		dataType: string
+		lineageTag: c31db49b-36f3-4ccb-b471-457e5ee991d5
+		summarizeBy: none
+		sourceColumn: CEG L3
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CEG L3 Desc'
+		dataType: string
+		lineageTag: dfca8889-7ef3-45b6-be05-6bd654082e1e
+		summarizeBy: none
+		sourceColumn: CEG L3 Desc
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CC CEG LV 3'
+		dataType: string
+		lineageTag: 29ea4728-fb2c-4c5f-aa1c-1cb320be53b0
+		summarizeBy: none
+		sourceColumn: CC CEG LV 3
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Budget Head (Category)'
+		dataType: string
+		lineageTag: 8592437a-3742-4b37-926a-c314bab22cc0
+		summarizeBy: none
+		sourceColumn: Budget Head (Category)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sub Budget head (Sub-Category)'
+		dataType: string
+		lineageTag: 300ff6aa-d8fc-4573-9f6b-86a665e07df6
+		summarizeBy: none
+		sourceColumn: Sub Budget head (Sub-Category)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Budget Owner'
+		dataType: string
+		lineageTag: 394fbcf0-10da-4167-be4c-126b87ea1eb9
+		summarizeBy: none
+		sourceColumn: Budget Owner
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Budget Owner view'
+		dataType: string
+		lineageTag: 491867d8-f0a6-4979-bf2a-7f73b5d1bbf4
+		summarizeBy: none
+		sourceColumn: Budget Owner view
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Material Code'
+		dataType: string
+		lineageTag: 4182d1e5-7db7-4158-9dcf-37a94780969b
+		summarizeBy: none
+		sourceColumn: Material Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sub Product Type'
+		dataType: string
+		lineageTag: dfe86167-01b4-4378-b963-9e8184dbcdbe
+		summarizeBy: none
+		sourceColumn: Sub Product Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Type'
+		dataType: string
+		lineageTag: 40a59a8b-0dc7-4a65-a4b5-34585cb3ff51
+		summarizeBy: none
+		sourceColumn: Product Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Accrual/Non accrual'
+		dataType: string
+		lineageTag: b5125653-990f-46b8-8009-c5a12f063479
+		summarizeBy: none
+		sourceColumn: Accrual/Non accrual
+
+		annotation SummarizationSetBy = Automatic
+
+	column Currency
+		dataType: string
+		lineageTag: f7102e28-62bf-4340-b16a-4debea9c645a
+		summarizeBy: none
+		sourceColumn: Currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: double
+		lineageTag: 702a8d5c-fd35-4a35-8339-62a1d2743a3b
+		summarizeBy: sum
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Source
+		dataType: string
+		lineageTag: 030054b8-1d50-40c3-97a0-06db07c9d824
+		summarizeBy: none
+		sourceColumn: Source
+
+		annotation SummarizationSetBy = Automatic
+
+	column NBSE
+		dataType: string
+		lineageTag: b513fddb-0256-4924-a37b-f4f51d7b1c4f
+		summarizeBy: none
+		sourceColumn: NBSE
+
+		annotation SummarizationSetBy = Automatic
+
+	column GL
+		dataType: int64
+		formatString: 0
+		lineageTag: 3ae591f0-6d63-43b7-bd9e-b118a44cf327
+		summarizeBy: sum
+		sourceColumn: GL
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CEG L1 Desc'
+		dataType: string
+		lineageTag: 8ff741be-0ae8-46b8-a419-a0279078e651
+		summarizeBy: none
+		sourceColumn: CEG L1 Desc
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'GL Desc'
+		dataType: string
+		lineageTag: f1600393-46f3-48a2-a43e-543c59c92900
+		summarizeBy: none
+		sourceColumn: GL Desc
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Submission Month Year - Copy'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 03e1de9b-169c-4873-b4e3-02c2f5b58243
+		summarizeBy: none
+		sourceColumn: Submission Month Year - Copy
+
+		variation Variation
+			isDefault
+			relationship: bbca1fc1-1d35-4240-ab02-c81de16df2e2
+			defaultHierarchy: LocalDateTable_fcaac4eb-a715-451e-8ff9-7c090db754d8.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition 'ECC Fact NBSE' = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"133971b6-11b0-4586-9832-e02bd64675ba" = Workspaces{[workspaceId="05da63f1-bad9-4662-9534-54ca7c283192"]}[Data],
+				    #"d22c3a33-fb3c-4845-abf6-6d13511046ea" = #"133971b6-11b0-4586-9832-e02bd64675ba"{[dataflowId="f9778b77-36c5-4c19-8936-fe29c4259006"]}[Data],
+				    #"ECC Fact NBSE_" = #"d22c3a33-fb3c-4845-abf6-6d13511046ea"{[entity="ECC Fact NBSE",version=""]}[Data],
+				    #"Appended Query" = Table.Combine({#"ECC Fact NBSE_", #"ECC Fact NBSE (2)"}),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Appended Query", "Submission Month Year", "Submission Month Year - Copy")
+				in
+				    #"Duplicated Column"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

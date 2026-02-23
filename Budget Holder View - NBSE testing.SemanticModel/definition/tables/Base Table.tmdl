@@ -1,0 +1,108 @@
+table 'Base Table'
+	lineageTag: c06a07c6-5e76-45be-910c-85c8c95349f0
+
+	column 'Submission Month Year'
+		formatString: MMM-YYYY
+		lineageTag: 3ff56dcb-cb18-4a5f-8d9a-313874877875
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Final Fact[Submission Month Year]
+
+		variation Variation
+			isDefault
+			relationship: b086e5ce-5c34-4b1b-af5a-1ae5918de544
+			defaultHierarchy: LocalDateTable_bd27bd1f-b0ee-4e03-b79e-f517629600a6.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Submission Year'
+		formatString: 0
+		lineageTag: 9a110c9d-70fb-41b9-843a-16d69922165b
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Final Fact[Submission Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month_Year_inside_Submission
+		dataType: dateTime
+		formatString: Mmm-yyyy
+		lineageTag: f49c34f4-7127-4301-8f33-a89cf30b09d7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Final Fact[Month_Year_inside_Submission]
+		sortByColumn: 'months sort'
+
+		variation Variation
+			isDefault
+			relationship: 19ab18ce-1183-452e-b50d-b3aac707814e
+			defaultHierarchy: LocalDateTable_480e8874-04d3-4fe4-afa5-ff578a24aaac.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	column Year_inside_Submission
+		lineageTag: c383d975-1d74-4458-8263-7231857d5ecb
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Final Fact[Year_inside_Submission]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Currency
+		lineageTag: a86399c1-42cb-4245-af88-db77832a075b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Final Fact[Currency]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		formatString: 0
+		lineageTag: 2e831d2e-8613-4bf4-b455-8a4643c2fd52
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Final Fact[Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Source
+		lineageTag: 774a2f62-3b7a-4dc3-901b-d1efe1eb31cc
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Final Fact[Source]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'months sort'
+		formatString: 0
+		lineageTag: 0f5c4d8c-da7a-4fe1-8aab-b694115b134b
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Final Fact[months sort]
+
+		annotation SummarizationSetBy = Automatic
+
+	column EM
+		lineageTag: 0bc7f369-d5aa-4d6f-ba23-879bedadc28c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Final Fact[EM]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Base Table' = calculated
+		mode: import
+		source = ```
+				SUMMARIZE('Final Fact', 'Final Fact'[Submission Month Year],'Final Fact'[Submission Year], 'Final Fact'[Month_Year_inside_Submission], 'Final Fact'[Year_inside_Submission], 'Final Fact'[Currency], 'Final Fact'[Year], 'Final Fact'[Source], 'Final Fact'[months sort], 'Final Fact'[EM]) 
+				```
+
+	annotation PBI_Id = 2ffa52cd14824c0c9d30936e8a0fc38a
+

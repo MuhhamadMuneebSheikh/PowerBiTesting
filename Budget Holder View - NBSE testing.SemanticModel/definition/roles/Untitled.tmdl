@@ -1,0 +1,21 @@
+role Untitled
+	modelPermission: read
+
+	tablePermission 'DRBU Mapping' =
+			VAR UserCountries =
+			    CALCULATETABLE(
+			        VALUES(NBSE[EM]),
+			        NBSE[User ID] = USERPRINCIPALNAME()
+			    )
+			
+			RETURN
+			IF (
+			    "APMEA" IN UserCountries,
+			    TRUE(),
+			    'DRBU Mapping'[Market] IN UserCountries
+			)
+
+	tablePermission NBSE = NBSE[User ID] == USERPRINCIPALNAME()
+
+	annotation PBI_Id = 6f9629c95a3e4bb4988ef400f6f07f42
+

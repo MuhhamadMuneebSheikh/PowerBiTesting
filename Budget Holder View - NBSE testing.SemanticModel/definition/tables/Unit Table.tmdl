@@ -1,0 +1,30 @@
+table 'Unit Table'
+	isHidden
+	lineageTag: a3f5bc13-0f7f-41ba-b0f7-530f3e079d8a
+
+	column Units
+		dataType: string
+		isHidden
+		lineageTag: c3361181-6316-48a2-ad4b-3d9610f47bff
+		summarizeBy: none
+		sourceColumn: Units
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Unit Table' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45W8sxTCMnILy1OzEtRitUB830zc3Iy8/OKlWJjAQ==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Units = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Units", type text}})
+				in
+				    #"Changed Type"
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

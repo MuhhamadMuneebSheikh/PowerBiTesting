@@ -1,0 +1,54 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-PK
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Final Fact","ECC Fact NBSE","ECC Fact BSE","Open PO Fact","Measures 1","Measures 2","Global Measures","Months Sorting Table","DRBU Mapping","NBSE","Unit Table","Last Refresh","ECC Fact NBSE (2)"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.145.1105.0 (25.07)+decbc46fce458c5b8d5109d6f32a743f2ac949c8
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table 'Final Fact'
+ref table 'ECC Fact NBSE'
+ref table DateTableTemplate_9cb480c4-8cc6-4083-9275-ee3e51b7421a
+ref table LocalDateTable_db66e2c9-0fd2-4436-8f81-b6647b36dcf3
+ref table LocalDateTable_e4a56b34-8a17-4dc3-a243-f60b8e37cc18
+ref table 'ECC Fact BSE'
+ref table LocalDateTable_448c1690-8ffa-4fd2-826b-cdb1f8d5fba2
+ref table LocalDateTable_4797437e-5b6d-4a07-91b0-a28125d5c8e4
+ref table 'Base Table'
+ref table 'Comparision Table'
+ref table 'Open PO Fact'
+ref table LocalDateTable_d5daddff-f7a3-4064-8564-aad22a6fcf70
+ref table LocalDateTable_5da9c946-fd2d-460b-abe3-b7de11e84bfe
+ref table LocalDateTable_58ea82a5-3d03-474e-8c8a-2dea0df81059
+ref table LocalDateTable_d1b98812-260e-42ca-8ebd-fb6ff47347bf
+ref table LocalDateTable_e4673745-1b15-4b32-81cf-6ab5699759c0
+ref table 'Measures 1'
+ref table 'Measures 2'
+ref table 'Global Measures'
+ref table LocalDateTable_d33d3114-c5fc-4236-8a47-c951566c6a36
+ref table 'Months Sorting Table'
+ref table LocalDateTable_4026da5b-d900-4c33-9b07-a823c1c359b4
+ref table LocalDateTable_94f98441-ae4b-4e60-82fe-5e4e4be1e0e1
+ref table 'DRBU Mapping'
+ref table NBSE
+ref table 'Unit Table'
+ref table 'Last Refresh'
+ref table LocalDateTable_78143092-7225-4260-bdf1-6655c14d0acf
+ref table LocalDateTable_ae487be4-86bf-4011-ad02-bdc32f4129e6
+ref table LocalDateTable_73a7f83f-6431-49e7-b785-d9cf00829608
+ref table LocalDateTable_bd27bd1f-b0ee-4e03-b79e-f517629600a6
+ref table LocalDateTable_480e8874-04d3-4fe4-afa5-ff578a24aaac
+ref table LocalDateTable_fcaac4eb-a715-451e-8ff9-7c090db754d8
+
+ref role Untitled
+
+ref cultureInfo en-US
+

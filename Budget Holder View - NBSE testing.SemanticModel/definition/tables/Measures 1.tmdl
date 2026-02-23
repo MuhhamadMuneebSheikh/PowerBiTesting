@@ -1,0 +1,262 @@
+table 'Measures 1'
+	lineageTag: 5ef548ef-299e-42b2-9fe0-7e6bbe1c28bc
+
+	measure 'Run Rate' = ```
+			
+			var div = DIVIDE([ECC for BHV],[BHI for BHV],0) 
+			RETURN
+			SWITCH(TRUE(),
+			div > 9.99, "+1000%",
+			div < -9.99, "-1000%",
+			div)
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: ac3ea2e8-7d0d-4a3f-a952-717d3899990c
+
+	measure 'YTG BHI' = ```
+			
+			// [BHI] - [Sum of ECC]
+			IF(
+			    ISINSCOPE('Final Fact'[GL Desc]) && BLANK() in VALUES('Final Fact'[GL Desc]),
+			    BLANK() ,
+			    [BHI for BHV] - [ECC for BHV]
+			)
+			
+			```
+		lineageTag: 7501044e-97cb-4d2a-84f1-1ad7819eeeb2
+
+		formatStringDefinition = ```
+				SWITCH (
+				    SELECTEDVALUE ( 'Unit Table'[Units], "Units" ),
+				 
+				    /* ──‑‑ thousands (÷1 000) ‑‑── */
+				    "In Thousand",
+				        "#,##0,.0""K""",
+				 
+				    /* ──‑‑ millions (÷1 000 000) ‑‑── */
+				    "In Millions",
+				        "#,##0,,.0""M""",
+				 
+				    /* ──‑‑ default: units ‑‑── */
+				    "#,##0"
+				)
+				```
+
+	measure 'YTD Actual (for line chart)' = ```
+			
+			var eec = "ECC"
+			RETURN
+			IF([ECC for BHV] <> 0, [ECC for BHV], BLANK()) 
+			```
+		lineageTag: f6b5a3d9-224d-4aac-a44b-8ddcc4bf2b28
+
+		formatStringDefinition = ```
+				SWITCH (
+				    SELECTEDVALUE ( 'Unit Table'[Units], "Units" ),
+				 
+				    /* ──‑‑ thousands (÷1 000) ‑‑── */
+				    "In Thousand",
+				        "#,##0,.0""K""",
+				 
+				    /* ──‑‑ millions (÷1 000 000) ‑‑── */
+				    "In Millions",
+				        "#,##0,,.0""M""",
+				 
+				    /* ──‑‑ default: units ‑‑── */
+				    "#,##0"
+				)
+				```
+
+	measure 'BHI for BHV' = ```
+			
+			 CALCULATE([BHI]
+			,ALL('Final Fact'[Submission Month Year])
+			)
+			```
+		lineageTag: 9fc18f12-f680-49d2-9ee6-d32caf3a0da4
+
+		formatStringDefinition = ```
+				SWITCH (
+				    SELECTEDVALUE ( 'Unit Table'[Units], "Units" ),
+				 
+				    /* ──‑‑ thousands (÷1 000) ‑‑── */
+				    "In Thousand",
+				        "#,##0,.0""K""",
+				 
+				    /* ──‑‑ millions (÷1 000 000) ‑‑── */
+				    "In Millions",
+				        "#,##0,,.0""M""",
+				 
+				    /* ──‑‑ default: units ‑‑── */
+				    "#,##0"
+				)
+				```
+
+	/// YTD Actual
+	measure 'ECC for BHV' =
+			
+			var val = CALCULATE([ECC]
+			,ALL('Final Fact'[Submission Month Year])
+			,'Final Fact'[Submission Month Year] = SELECTEDVALUE('Base Table'[Submission Month Year])
+			)
+			RETURN
+			IF(val = 0.0, BLANK(),
+			IF(
+			    ISINSCOPE('Final Fact'[GL Desc]) && BLANK() in VALUES('Final Fact'[GL Desc]),
+			    BLANK() ,
+			    val
+			)
+			)
+		lineageTag: e63d75ba-1e26-45b0-961e-6ae37e35c5d8
+
+		formatStringDefinition = ```
+				SWITCH (
+				    SELECTEDVALUE ( 'Unit Table'[Units], "Units" ),
+				 
+				    /* ──‑‑ thousands (÷1 000) ‑‑── */
+				    "In Thousand",
+				        "#,##0,.0""K""",
+				 
+				    /* ──‑‑ millions (÷1 000 000) ‑‑── */
+				    "In Millions",
+				        "#,##0,,.0""M""",
+				 
+				    /* ──‑‑ default: units ‑‑── */
+				    "#,##0"
+				)
+				```
+
+	measure 'ACT YTD (for stacked bar chart)' = ```
+			DIVIDE([ECC for BHV],[BHI for BHV],0) 
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 92d79e25-d4a1-4659-a3ad-0bc3a6bcae6e
+
+	measure 'YTG BHI (for stacked bar chart)' =
+			
+			var sub = [BHI for BHV] - [ECC for BHV]
+			RETURN
+			DIVIDE(sub, [BHI for BHV],0)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: fda609bc-fce1-4d92-b7e2-7d77018cc7d0
+
+	measure 'ECC & BHI (for BSE BHV detail view)' = ```
+			
+			VAR MaxECCMonth =
+			    CALCULATE(
+			        MAX('Base Table'[Submission Month Year]),
+			        'Final Fact'[Source] = "ECC"
+			    )
+			 
+			VAR CurrentMonth = SELECTEDVALUE('Final Fact'[Month Year])
+			 
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    CurrentMonth <= MaxECCMonth, [ECC for BHV],
+			    CurrentMonth > MaxECCMonth,  [BHI for BHV],
+			    BLANK()
+			)
+			```
+		lineageTag: 015b5a76-f036-4052-9053-4e7116febbb6
+
+		formatStringDefinition = ```
+				SWITCH (
+				    SELECTEDVALUE ( 'Unit Table'[Units], "Units" ),
+				 
+				    /* ──‑‑ thousands (÷1 000) ‑‑── */
+				    "In Thousand",
+				        "#,##0,.0""K""",
+				 
+				    /* ──‑‑ millions (÷1 000 000) ‑‑── */
+				    "In Millions",
+				        "#,##0,,.0""M""",
+				 
+				    /* ──‑‑ default: units ‑‑── */
+				    "#,##0"
+				)
+				```
+
+	measure ShowRowInMatrix = ```
+			
+			IF(
+			    ISINSCOPE('Final Fact'[GL Desc]) && BLANK() in VALUES('Final Fact'[GL Desc]),
+			    BLANK() ,
+			    [BHI for BHV]
+			)
+			
+			```
+		lineageTag: 74763632-8816-482d-9cdc-2d96a83cb073
+
+		formatStringDefinition = ```
+				SWITCH (
+				    SELECTEDVALUE ( 'Unit Table'[Units], "Units" ),
+				 
+				    /* ──‑‑ thousands (÷1 000) ‑‑── */
+				    "In Thousand",
+				        "#,##0,.0""K""",
+				 
+				    /* ──‑‑ millions (÷1 000 000) ‑‑── */
+				    "In Millions",
+				        "#,##0,,.0""M""",
+				 
+				    /* ──‑‑ default: units ‑‑── */
+				    "#,##0"
+				)
+				```
+
+	measure 'ACT YTD for bar chart' = ```
+			
+			var div = DIVIDE([ECC for BHV],[BHI for BHV],0) 
+			var a = IF(div = 0, BLANK(), div)
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    a > 2 , 2,
+			    a < -2 ,-2,
+			    a
+			)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 469945b2-37f2-43b9-894b-01c5eace3d46
+
+	measure 'YTG BHI for bar chart' =
+			
+			var sub = [BHI for BHV] - [ECC for BHV]
+			var div = DIVIDE(sub, [BHI for BHV],0)
+			var a = IF(div = 0, BLANK(), div)
+			RETURN
+			IF( a >=2 || a < -1 , 0 , IF(a < 0 , 0 ,a))
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 8fb63120-e150-455a-80cc-894ab40bb018
+
+	measure 'data lables for bar chart' =
+			
+			VAR a = [ACT YTD for bar chart]
+			RETURN
+			SWITCH( TRUE(),
+			a = 2, ">" & " 200%" ,
+			 a = -2, "<" & " -200%" ,
+			 [ACT YTD for bar chart])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 41d611f6-db08-4f60-8751-5590afb68412
+
+	column Column1
+		dataType: string
+		lineageTag: c1c67968-1774-4505-a31a-15547065534a
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Measures 1' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

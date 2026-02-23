@@ -1,0 +1,15 @@
+expression 'ECC Fact NBSE (2)' =
+		let
+		    Source = PowerPlatform.Dataflows(null),
+		    Workspaces = Source{[Id="Workspaces"]}[Data],
+		    #"05da63f1-bad9-4662-9534-54ca7c283192" = Workspaces{[workspaceId="05da63f1-bad9-4662-9534-54ca7c283192"]}[Data],
+		    #"f5494429-53b9-4dd1-8e40-77b3610550c1" = #"05da63f1-bad9-4662-9534-54ca7c283192"{[dataflowId="f5494429-53b9-4dd1-8e40-77b3610550c1"]}[Data],
+		    #"ECC Fact NBSE_" = #"f5494429-53b9-4dd1-8e40-77b3610550c1"{[entity="ECC Fact NBSE",version=""]}[Data]
+		in
+		    #"ECC Fact NBSE_"
+	lineageTag: 9bc107b0-bbd4-4309-b57f-a8eb5d898e31
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

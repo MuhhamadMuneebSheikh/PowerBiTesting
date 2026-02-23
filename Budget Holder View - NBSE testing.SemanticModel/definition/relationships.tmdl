@@ -1,0 +1,110 @@
+relationship f9afabe0-af2f-4234-ad20-ef1a160752a3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'ECC Fact NBSE'.'Document Date'
+	toColumn: LocalDateTable_db66e2c9-0fd2-4436-8f81-b6647b36dcf3.Date
+
+relationship 8deb5346-bba0-4900-82cd-db08d413d19e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'ECC Fact NBSE'.'Posting Date'
+	toColumn: LocalDateTable_e4a56b34-8a17-4dc3-a243-f60b8e37cc18.Date
+
+relationship f38a799f-bdf9-406d-95bb-f17d612f4769
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'ECC Fact BSE'.'Posting Date'
+	toColumn: LocalDateTable_448c1690-8ffa-4fd2-826b-cdb1f8d5fba2.Date
+
+relationship 5c04938b-2fe3-4dac-939b-913e4e0216a7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'ECC Fact BSE'.'Document Date'
+	toColumn: LocalDateTable_4797437e-5b6d-4a07-91b0-a28125d5c8e4.Date
+
+relationship 75bba0e2-23c6-4f94-ba75-0c23247db5c9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Open PO Fact'.'PO Date'
+	toColumn: LocalDateTable_d5daddff-f7a3-4064-8564-aad22a6fcf70.Date
+
+relationship 9b32105c-d74d-4265-8dea-65e29fd0fdf6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Open PO Fact'.'Final Delivery Date'
+	toColumn: LocalDateTable_5da9c946-fd2d-460b-abe3-b7de11e84bfe.Date
+
+relationship 3fa2e0ec-795a-4251-9a4e-cbd9ee08c66f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Open PO Fact'.'Invoice Doc. Date'
+	toColumn: LocalDateTable_58ea82a5-3d03-474e-8c8a-2dea0df81059.Date
+
+relationship 0acc4396-1d36-4523-92e8-d1cf14546019
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Open PO Fact'.'Invoice Post. Date'
+	toColumn: LocalDateTable_d1b98812-260e-42ca-8ebd-fb6ff47347bf.Date
+
+relationship a23f61d9-b5ed-48ae-9070-850b6c7f8d29
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Open PO Fact'.'Payment Date'
+	toColumn: LocalDateTable_e4673745-1b15-4b32-81cf-6ab5699759c0.Date
+
+relationship d20b7752-c1c3-49e7-baf6-b4a121bd7e51
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Final Fact'.'Month Year'
+	toColumn: LocalDateTable_d33d3114-c5fc-4236-8a47-c951566c6a36.Date
+
+relationship 6da32755-268b-c789-2f8f-0a5dd673ebe6
+	fromColumn: 'Final Fact'.Months
+	toColumn: 'Months Sorting Table'.Months
+
+relationship 4f9406a7-07ff-4b47-8a2a-85bee5820088
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Final Fact'.'Submission Month Year'
+	toColumn: LocalDateTable_4026da5b-d900-4c33-9b07-a823c1c359b4.Date
+
+relationship 3721b284-5de0-4c60-9367-1cdc2a2d082a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Comparision Table'.'Month Year'
+	toColumn: LocalDateTable_94f98441-ae4b-4e60-82fe-5e4e4be1e0e1.Date
+
+relationship 32e4819d-2ffb-4066-1969-099b0ad36787
+	fromColumn: 'Final Fact'.EM
+	toColumn: 'DRBU Mapping'.Market
+
+relationship 73d56d7e-0a35-4ac8-72a1-a6f79d0d2f2c
+	fromColumn: 'ECC Fact NBSE'.EM
+	toColumn: 'DRBU Mapping'.Market
+
+relationship 25289892-1c80-c4b9-7a74-be88c5deb690
+	fromColumn: 'ECC Fact BSE'.EM
+	toColumn: 'DRBU Mapping'.Market
+
+relationship 34cfd63e-aef9-4b79-50fa-6e18d3d18514
+	fromColumn: 'Open PO Fact'.EM
+	toColumn: 'DRBU Mapping'.Market
+
+relationship 4ad9a15d-1f93-4862-93b1-e7835f0fef12
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Last Refresh'.'Last Refresh'
+	toColumn: LocalDateTable_78143092-7225-4260-bdf1-6655c14d0acf.Date
+
+relationship aba34c3e-76ea-49f7-9290-fb4d6d2d39ae
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Last Refresh'.LocalDateTime
+	toColumn: LocalDateTable_ae487be4-86bf-4011-ad02-bdc32f4129e6.Date
+
+relationship cd114024-ecb4-4dd0-ac6f-2e5fc85981be
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Comparision Table'.'Submission Month Year'
+	toColumn: LocalDateTable_73a7f83f-6431-49e7-b785-d9cf00829608.Date
+
+relationship b086e5ce-5c34-4b1b-af5a-1ae5918de544
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Base Table'.'Submission Month Year'
+	toColumn: LocalDateTable_bd27bd1f-b0ee-4e03-b79e-f517629600a6.Date
+
+relationship 19ab18ce-1183-452e-b50d-b3aac707814e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Base Table'.Month_Year_inside_Submission
+	toColumn: LocalDateTable_480e8874-04d3-4fe4-afa5-ff578a24aaac.Date
+
+relationship bbca1fc1-1d35-4240-ab02-c81de16df2e2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'ECC Fact NBSE'.'Submission Month Year - Copy'
+	toColumn: LocalDateTable_fcaac4eb-a715-451e-8ff9-7c090db754d8.Date
+

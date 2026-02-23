@@ -1,0 +1,48 @@
+table 'Last Refresh'
+	lineageTag: 2896771b-d050-4e3e-98b3-ee7679f10391
+
+	column 'Last Refresh'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c6734805-3da0-493c-a483-65f17824f12c
+		summarizeBy: none
+		sourceColumn: Last Refresh
+
+		variation Variation
+			isDefault
+			relationship: 4ad9a15d-1f93-4862-93b1-e7835f0fef12
+			defaultHierarchy: LocalDateTable_78143092-7225-4260-bdf1-6655c14d0acf.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column LocalDateTime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1b4c261c-971b-4925-8a59-3bfb51c0163e
+		summarizeBy: none
+		sourceColumn: LocalDateTime
+
+		variation Variation
+			isDefault
+			relationship: aba34c3e-76ea-49f7-9290-fb4d6d2d39ae
+			defaultHierarchy: LocalDateTable_ae487be4-86bf-4011-ad02-bdc32f4129e6.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Last Refresh' = m
+		mode: import
+		source =
+				let
+				    Source = DateTimeZone.SwitchZone(DateTimeZone.LocalNow(),+6),
+				    #"Converted to Table" = #table(1, {{Source}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Converted to Table",{{"Column1", "Last Refresh"}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"Last Refresh", type datetime}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type", "LocalDateTime", each DateTimeZone.FixedLocalNow()+ #duration(0,5,0,0)),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom",{{"LocalDateTime", type datetime}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

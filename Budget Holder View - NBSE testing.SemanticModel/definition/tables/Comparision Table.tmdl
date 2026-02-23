@@ -1,0 +1,105 @@
+table 'Comparision Table'
+	lineageTag: 9e1eb4b1-7e1c-4ffe-a06c-c010f78a4057
+
+	column 'Submission Month Year'
+		formatString: Mmm-yyyy
+		lineageTag: 3a94cca8-3981-49bf-a966-805e3eae22c1
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Final Fact[Submission Month Year]
+
+		variation Variation
+			isDefault
+			relationship: cd114024-ecb4-4dd0-ac6f-2e5fc85981be
+			defaultHierarchy: LocalDateTable_73a7f83f-6431-49e7-b785-d9cf00829608.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	column 'Submission Year'
+		formatString: 0
+		lineageTag: d5e7b52b-fab0-4ab7-b342-53d0839aaac8
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Final Fact[Submission Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month_Year_inside_Submission
+		lineageTag: 864dae73-be6a-4c51-8f93-12815cb22629
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Final Fact[Month_Year_inside_Submission]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year_inside_Submission
+		lineageTag: 1d7893a5-1ef3-4879-b264-988bf4e8f0b2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Final Fact[Year_inside_Submission]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Currency
+		lineageTag: 50c4feaa-88fd-4cc9-b9e6-f3cb0d0bf6fd
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Final Fact[Currency]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		formatString: 0
+		lineageTag: a0c02007-fd51-44b5-bd50-a25ae91bda3c
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Final Fact[Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Year' = 'Comparision Table'[Month_Year_inside_Submission]
+		dataType: dateTime
+		formatString: Mmm-yyyy
+		lineageTag: e597bd82-49fb-4fe3-be89-512604918841
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: 3721b284-5de0-4c60-9367-1cdc2a2d082a
+			defaultHierarchy: LocalDateTable_94f98441-ae4b-4e60-82fe-5e4e4be1e0e1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	column 'CEG L1 Desc'
+		lineageTag: 35591555-f6ee-40fa-968a-353b68440399
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Final Fact[CEG L1 Desc]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CEG L2 Desc'
+		lineageTag: 895dd6b1-e33c-44f2-b860-ea21b953b3e2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Final Fact[CEG L2 Desc]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Comparision Table' = calculated
+		mode: import
+		source = ```
+				SUMMARIZE('Final Fact', 'Final Fact'[Submission Month Year],'Final Fact'[Submission Year], 'Final Fact'[Month_Year_inside_Submission], 'Final Fact'[Year_inside_Submission], 'Final Fact'[Currency], 'Final Fact'[Year], 'Final Fact'[CEG L1 Desc],
+				'Final Fact'[CEG L2 Desc]) 
+				```
+
+	annotation PBI_Id = 3864ba23f72f414087c01c2c9411eed6
+
